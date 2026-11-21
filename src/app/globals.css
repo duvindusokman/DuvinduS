@@ -5,20 +5,20 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Surfaces */
-  --color-ink: #07060b;        /* page background */
-  --color-surface: #0e0c16;    /* cards */
-  --color-line: #1f1b2e;       /* borders */
+  /* Surfaces — black */
+  --color-ink: #050304;        /* page background */
+  --color-surface: #100a0b;    /* cards */
+  --color-line: #2a1519;       /* borders */
 
   /* Text */
-  --color-fg: #ece9f5;
-  --color-muted: #9a94b0;
+  --color-fg: #f3ecee;
+  --color-muted: #a8979b;
 
-  /* Purple accent scale */
-  --color-accent: #8b5cf6;     /* violet-500 */
-  --color-accent-soft: #a78bfa;/* violet-400 */
-  --color-accent-deep: #6d28d9;/* violet-700 */
-  --color-glow: #c084fc;       /* purple-400 */
+  /* Maroon accent scale */
+  --color-accent: #9b1c31;     /* maroon (buttons, dots) */
+  --color-accent-soft: #e0707f;/* light maroon/rose (labels, links) */
+  --color-accent-deep: #5c0f1c;/* deep maroon (hover, gradients) */
+  --color-glow: #c2334b;       /* glow & gradient name */
 }
 
 /* ── Base ──────────────────────────────────────────────────── */
@@ -29,7 +29,10 @@ html {
 }
 
 body {
-  background: var(--color-ink);
+  background-color: var(--color-ink);
+  /* faint dot pattern */
+  background-image: radial-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
   color: var(--color-fg);
 }
 
@@ -40,7 +43,7 @@ body {
 
 /* ── Reusable utilities ────────────────────────────────────── */
 @utility text-gradient {
-  background: linear-gradient(110deg, #f5f3ff 10%, var(--color-accent-soft) 45%, var(--color-glow) 75%);
+  background: linear-gradient(110deg, #fff4f5 10%, var(--color-accent-soft) 45%, var(--color-glow) 75%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -58,7 +61,7 @@ body {
 @utility card-hover {
   &:hover {
     border-color: color-mix(in oklab, var(--color-accent) 55%, var(--color-line));
-    box-shadow: 0 0 0 1px rgb(139 92 246 / 0.15), 0 20px 60px -20px rgb(139 92 246 / 0.35);
+    box-shadow: 0 0 0 1px rgb(155 28 49 / 0.25), 0 20px 60px -20px rgb(155 28 49 / 0.5);
     transform: translateY(-2px);
   }
 }

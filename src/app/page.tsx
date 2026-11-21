@@ -1,9 +1,9 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import Certifications from "@/components/Certifications";
 import CVDownload from "@/components/CVDownload";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
-import Expertise from "@/components/Expertise";
 import Extracurriculars from "@/components/Extracurriculars";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -23,11 +23,11 @@ import {
 // numbering (01, 02 …) adjusts automatically.
 const sections = [
   { key: "about", show: true, C: About },
-  { key: "expertise", show: true, C: Expertise },
   { key: "experience", show: experience.length > 0, C: Experience },
   { key: "projects", show: projects.length > 0, C: Projects },
   { key: "tools", show: tools.length > 0, C: Tools },
-  { key: "education", show: education.length + certifications.length > 0, C: Education },
+  { key: "education", show: education.length > 0, C: Education },
+  { key: "certifications", show: certifications.length > 0, C: Certifications },
   { key: "activities", show: extracurriculars.length > 0, C: Extracurriculars },
 ].filter((s) => s.show);
 

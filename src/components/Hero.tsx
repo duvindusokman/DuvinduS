@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-16">
-      {/* Background: grid + purple glow orbs */}
+      {/* Background: grid + maroon glow orbs */}
       <div className="bg-grid pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-accent/25 blur-[140px]" />
       <div className="pointer-events-none absolute right-[-10%] top-1/3 h-72 w-72 rounded-full bg-glow/15 blur-[120px]" />

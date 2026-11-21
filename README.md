@@ -1,15 +1,19 @@
 # Duvindu Sokman — Portfolio (Next.js 16 · Tailwind CSS 4 · Vercel)
 
-A dark, purple-accented, single-page portfolio focused on **Business Analysis & Project Management**:
-Hero, About, Expertise (BA + PM pillars, "How I work", supporting skills), Experience timeline,
+A black & maroon, single-page portfolio focused on **Business Analysis & Project Management**:
+Hero, About, Experience timeline,
 Projects, an interactive **Tools dashboard** (click a category to group, ↻ to scatter),
-Education & Certifications, Leadership & Activities, CV download and Contact.
+Education, Certifications and Extracurricular Activities (logo cards), CV download and Contact.
 All content lives in **one file**: `src/data/portfolio.ts`.
 
 ### Quick edits still to do
 - `profile.socials.linkedin` — paste your LinkedIn URL (button stays hidden while empty)
 - `certifications[].url` — paste each "Show credential" link from LinkedIn
 - Optional: `profile.socials.github`, `NEXT_PUBLIC_FORMSPREE_ID` (see Step 6)
+
+### Logos
+School, certification and club logos live in `public/logos`. Set `logo: "/logos/file.png"` on an
+entry in `src/data/portfolio.ts`; entries without a logo show a maroon monogram (e.g. "CS").
 
 ### Tools dashboard
 Logos live in `public/tools/*.svg`. To add a tool: drop its logo in that folder and add one line
@@ -94,7 +98,7 @@ Replace `public/profile.jpg` with your own photo (keep the name, or change `phot
 `src/data/portfolio.ts`). Use a portrait shot, roughly 4:5 (e.g. 800×1000 px or larger),
 face near the top-centre. It shows as a framed portrait on desktop and a circle on mobile.
 
-## Step 5 — Customise the purple theme
+## Step 5 — Customise the black & maroon theme
 
 In `src/app/globals.css`, under `@theme inline`:
 

@@ -7,17 +7,19 @@ export default function Section({
   n,
   eyebrow,
   title,
+  center = false,
   children,
 }: {
   id: string;
   n?: string;
   eyebrow: string;
   title: string;
+  center?: boolean;
   children: ReactNode;
 }) {
   return (
     <section id={id} className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-      <Reveal>
+      <Reveal className={center ? "text-center" : ""}>
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-soft">{n ? `${n} — ` : ""}{eyebrow}</p>
         <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">{title}</h2>
       </Reveal>

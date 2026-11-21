@@ -48,82 +48,6 @@ export const profile = {
   ],
 };
 
-// ── Expertise ────────────────────────────────────────────────
-export type Pillar = {
-  title: string;
-  icon: "analysis" | "project";
-  summary: string;
-  items: string[];
-};
-
-export const pillars: Pillar[] = [
-  {
-    title: "Business Analysis",
-    icon: "analysis",
-    summary:
-      "Understanding how the business works, asking the right questions and documenting needs clearly so the team builds the right thing.",
-    items: [
-      "Business process analysis",
-      "Requirements gathering",
-      "Process & UML modelling",
-      "Wireframing & prototyping",
-      "Data analysis & reporting",
-      "ERP & information systems",
-      "Policy & quality compliance",
-      "Technical communication",
-    ],
-  },
-  {
-    title: "Project Management",
-    icon: "project",
-    summary:
-      "Coordinating people, tasks and budgets, and keeping progress, service levels and decisions visible from start to finish.",
-    items: [
-      "Project coordination",
-      "Task planning & tracking",
-      "Budgeting & finance oversight",
-      "KPI & service-level monitoring",
-      "Team training & onboarding",
-      "Stakeholder communication",
-      "Team collaboration",
-      "Documentation & reporting",
-    ],
-  },
-];
-
-export const process = [
-  { step: "Discover", text: "Meet stakeholders, understand goals and map how things work today." },
-  { step: "Define", text: "Capture requirements, user stories and acceptance criteria." },
-  { step: "Design", text: "Model the future process, flows and wireframes for sign-off." },
-  { step: "Deliver", text: "Plan sprints, track progress and manage risks and change." },
-  { step: "Measure", text: "Report outcomes with data and feed lessons into the next cycle." },
-];
-
-export const skills: { group: string; items: string[] }[] = [
-  {
-    group: "Databases & Analytics",
-    items: ["SQL", "Microsoft Access", "Power BI", "Tableau", "RapidMiner AI Studio", "Descriptive & exploratory analytics"],
-  },
-  {
-    group: "Business & Enterprise",
-    items: ["ERP systems", "Financial statement analysis", "Corporate finance", "Business process analysis"],
-  },
-  {
-    group: "Development",
-    items: ["Python", "JavaScript", "TypeScript", "PHP", "HTML & CSS", "Node.js", "Streamlit", "Git & GitHub"],
-  },
-  {
-    group: "Core Competencies",
-    items: [
-      "Analytical & critical thinking",
-      "Problem-solving",
-      "Team collaboration",
-      "Technical communication",
-      "Adaptability & learning agility",
-    ],
-  },
-];
-
 // ── Tools dashboard ──────────────────────────────────────────
 // Icons live in /public/tools. To add a tool, drop an SVG/PNG there
 // and add a line below. Categories control the glow colour & grouping.
@@ -131,7 +55,7 @@ export const toolCategories = [
   {
     id: "pm",
     label: "Project & Workspace",
-    color: "#8b5cf6",
+    color: "#e05a73",
     blurb: "Planning work, tracking tasks and producing the documents and decks stakeholders read.",
   },
   {
@@ -280,25 +204,32 @@ export const projects: Project[] = [
 ];
 
 // ── Education & certifications ───────────────────────────────
+// `logo`: optional image path (put the file in /public/logos).
+// Without one, a maroon monogram badge is shown instead.
 export type Education = {
-  degree: string;
   school: string;
+  qualification: string;
   period: string;
-  detail: string;
+  detail?: string;
+  logo?: string;
+  monogram: string;
 };
 
 export const education: Education[] = [
   {
-    degree: "BSc (Hons) in Business Information Systems",
     school: "University of Sri Jayewardenepura",
+    qualification: "BSc (Hons) in Business Information Systems",
     period: "Undergraduate · Reading",
-    detail: "Studying where business, information systems and data meet — the foundation for my Business Analysis and Project Management focus.",
+    logo: "/logos/usj.png",
+    monogram: "USJ",
   },
   {
-    degree: "GCE Advanced Level — Commerce Stream (3 A passes)",
     school: "Nalanda College, Colombo 10",
+    qualification: "GCE Advanced Level — 3 A passes",
     period: "2023",
-    detail: "Business Studies · Information & Communication Technology · Accounting",
+    detail: "Business Studies · ICT · Accounting",
+    logo: "/logos/nalanda.png",
+    monogram: "NC",
   },
 ];
 
@@ -306,99 +237,95 @@ export type Certification = {
   name: string;
   issuer: string;
   issued: string;
-  skills: string[];
-  url?: string; // paste the "Show credential" link from LinkedIn
+  logo?: string;
+  url?: string; // paste the "Show credential" link — shows a "Verified" badge
 };
 
 export const certifications: Certification[] = [
-  {
-    name: "Business Analytics Foundations",
-    issuer: "LinkedIn Learning",
-    issued: "Dec 2025",
-    skills: ["Descriptive analytics", "Exploratory analytics"],
-    url: "", // TODO paste credential link
-  },
-  {
-    name: "Corporate Financial Statement Analysis",
-    issuer: "LinkedIn Learning",
-    issued: "Dec 2025",
-    skills: ["Corporate finance", "Financial statement analysis"],
-    url: "",
-  },
-  {
-    name: "SQL Essentials",
-    issuer: "LinkedIn Learning",
-    issued: "Aug 2024",
-    skills: ["SQL"],
-    url: "",
-  },
-  {
-    name: "Introduction to Artificial Intelligence",
-    issuer: "LinkedIn Learning",
-    issued: "Aug 2024",
-    skills: ["Artificial intelligence (AI)"],
-    url: "",
-  },
-  {
-    name: "Ethical Hacking",
-    issuer: "LinkedIn Learning",
-    issued: "Aug 2024",
-    skills: ["Ethical hacking"],
-    url: "",
-  },
+  { name: "Business Analytics Foundations", issuer: "LinkedIn Learning", issued: "December 2025", logo: "/logos/linkedin.svg", url: "" },
+  { name: "Corporate Financial Statement Analysis", issuer: "LinkedIn Learning", issued: "December 2025", logo: "/logos/linkedin.svg", url: "" },
+  { name: "SQL Essentials", issuer: "LinkedIn Learning", issued: "August 2024", logo: "/logos/linkedin.svg", url: "" },
+  { name: "Introduction to Artificial Intelligence", issuer: "LinkedIn Learning", issued: "August 2024", logo: "/logos/linkedin.svg", url: "" },
+  { name: "Ethical Hacking", issuer: "LinkedIn Learning", issued: "August 2024", logo: "/logos/linkedin.svg", url: "" },
 ];
 
 // ── Extracurriculars ─────────────────────────────────────────
-export type Extracurricular = {
-  title: string;
+// One card per organisation; list every role you held there.
+export type Activity = {
   org: string;
   period: string;
-  description: string;
-  category: string; // e.g. Leadership, Volunteering, Sports, Competition
+  logo?: string;
+  monogram: string;
+  roles: { title: string; period?: string; description?: string }[];
 };
 
-export const extracurriculars: Extracurricular[] = [
+export const extracurriculars: Activity[] = [
   {
-    title: "Treasurer",
     org: "Rotaract Club of University of Sri Jayewardenepura",
-    period: "RI Year 2026–27",
-    description: "Oversee the club's finances, budgets and fund management for projects across the Rotaract year.",
-    category: "Leadership",
+    period: "2025 — Present",
+    logo: "/logos/rotaract.svg",
+    monogram: "RC",
+    roles: [
+      {
+        title: "Treasurer",
+        period: "RI Year 2026–27",
+        description: "Overseeing the club's finances, budgets and fund management for projects across the Rotaract year.",
+      },
+      {
+        title: "Director of Finance",
+        period: "RI Year 2025–26",
+        description: "Led the finance avenue, planning and tracking project budgets alongside the board.",
+      },
+    ],
   },
   {
-    title: "Director of Finance",
-    org: "Rotaract Club of University of Sri Jayewardenepura",
-    period: "RI Year 2025–26",
-    description: "Led the finance avenue, planning and tracking project budgets alongside the board.",
-    category: "Leadership",
-  },
-  {
-    title: "Secretary",
     org: "Commerce Society of Nalanda College",
-    period: "2022–23",
-    description: "Coordinated society communication and records, and built the society's official website, nalandacommerce.lk.",
-    category: "Leadership",
+    period: "2022 — 2023",
+    monogram: "CS",
+    roles: [
+      {
+        title: "Secretary",
+        period: "2022–23",
+        description: "Coordinated society communication and records, and built the official website, nalandacommerce.lk.",
+      },
+    ],
   },
   {
-    title: "Assistant Secretary",
     org: "ICT Society of Nalanda College",
-    period: "2022–23",
-    description: "Supported the society's administration, meetings and event coordination.",
-    category: "Leadership",
+    period: "2022 — 2023",
+    monogram: "ICT",
+    roles: [
+      {
+        title: "Assistant Secretary",
+        period: "2022–23",
+        description: "Supported the society's administration, meetings and event coordination.",
+      },
+    ],
   },
   {
-    title: "Member",
-    org: "IEEE Student Branch · Career Skills Development Society",
+    org: "IEEE Student Branch",
     period: "University",
-    description: "Taking part in technical and career-development activities at university.",
-    category: "Professional",
+    logo: "/logos/ieee.svg",
+    monogram: "IEEE",
+    roles: [{ title: "Member" }],
   },
   {
-    title: "Member",
-    org: "Leo Club (2022–23) · Interact Club of Nalanda College",
+    org: "Career Skills Development Society",
+    period: "University",
+    monogram: "CSDS",
+    roles: [{ title: "Member" }],
+  },
+  {
+    org: "Leo Club of Nalanda College",
+    period: "2022 — 2023",
+    monogram: "LEO",
+    roles: [{ title: "Member", period: "2022–23" }],
+  },
+  {
+    org: "Interact Club of Nalanda College",
     period: "School",
-    description: "Contributed to community service projects through the school's service clubs.",
-    category: "Service",
+    monogram: "IC",
+    roles: [{ title: "Member" }],
   },
 ];
 
@@ -406,11 +333,11 @@ export const extracurriculars: Extracurricular[] = [
 // `show` hides a link automatically when its section has no content.
 export const nav = [
   { label: "About", href: "#about", show: true },
-  { label: "Expertise", href: "#expertise", show: true },
   { label: "Experience", href: "#experience", show: experience.length > 0 },
   { label: "Projects", href: "#projects", show: projects.length > 0 },
   { label: "Tools", href: "#tools", show: tools.length > 0 },
-  { label: "Credentials", href: "#education", show: education.length + certifications.length > 0 },
+  { label: "Education", href: "#education", show: education.length > 0 },
+  { label: "Certifications", href: "#certifications", show: certifications.length > 0 },
   { label: "Activities", href: "#activities", show: extracurriculars.length > 0 },
   { label: "Contact", href: "#contact", show: true },
 ].filter((n) => n.show);
